@@ -3,7 +3,7 @@
 In this project, converting to epoch time format, converting image to base64, sending the current timestamp to server and,
 various other client validations are done.
 
-Responsiveness is acheived through Flexbox usage in css.
+Responsiveness is acheived through Flexbox usage in css and semantic HTML5 markup is used.
 
-HTML5 semantic markup is used.
+
 
