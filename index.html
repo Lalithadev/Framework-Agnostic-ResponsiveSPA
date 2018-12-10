@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
+<meta name="viewport" content="width=device-width", user-scalable="yes", initial-scale="1.0">
+<title>Admin page</title>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <link rel="stylesheet" href="https://code.jqueryui.com/resources/demos/style.css"> -->
+<link rel="stylesheet" href="./css/custom.css">  
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="./js/wrk.js"></script>
+ 
+</head>
+<body>
+    <div class="form-container">
+      <form enctype='multipart/form-data' id="dealBuddy" method="POST">
+        <h1>Add Item</h1>
+        <div class="form-field multi-input">
+          <label for="item">Item Type<span style="color:blue;">*</span></label>
+          <select name="item" id="item" required>
+                  <option value="">select</option>
+                  <option value="1">Deal</option>
+                  <option value="2">Coupon</option>
+                  <option value="3">Event</option>
+                  <option value="4">Travel</option>
+                  <option value="5">Things to do</option>
+                  <option value="6">Food</option>
+          </select>
+       </div>
+
+        <div class="form-field input-right">
+          <label for="dealerRoleUserEmail">Email<span style="color:blue;">*</span></label>
+          <input type="email" id="dealerRoleUserEmail" name="dealerRoleUserEmail" required placeholder="admin@admin.com" autocomplete="email">
+        </div> 
+
+        <div class="form-field input-right">
+          <label for="title">Title<span style="color:blue;">*</span></label>
+          <input type="text" id="title"  name= "title" required>
+        </div>
+        <div class="form-field input-right">
+          <label for="imageUrl">ImageUrl</label>
+          <input type="text" id="imageUrl"  name ="imageUrl" placeholder="https://www.gstatic.com/webp/gallery/1.jpg">
+          <label>OR</label>
+        </div>
+
+        <div class="form-field input-right">
+            <label for="inputFileToLoad">ImageUpload</label>
+            <input type="file" id="inputFileToLoad"  name="inputFileToLoad" onchange="encodeImageFileAsURL();">
+            <div class="form-field input-right">
+               <input type="hidden" id="base64ImageBytes" name="base64ImageBytes">
+            </div>
+        </div>
+
+        <div class="form-field input-right">
+          <label for="description">Description<span style="color:blue;">*</span></label>
+          <textarea rows="6" id="description"  name="description" required rows="4" cols="50"></textarea>
+        </div>
+
+          <div class="form-field input-right">
+          <label for="categories">Categories</label>
+          <input type="text" id="categories"  name="categories">
+        </div>
+
+        <div class="form-field input-right" id="brnd">
+          <label for="brand">Brand</label>
+          <input type="text" id="brand"  name="brand">
+        </div>
+          <div class="form-field input-right">
+          <label for="vendor">Vendor</label>
+          <input type="text" id="vendor"  name="vendor">
+        </div>
+
+        <!-- <div class="form-field input-right">
+          <label for="phone">Phone</label>
+          <input type="text" id="phone">
+        </div> -->
+
+          <div class="form-field input-right">
+          <label for="url">URL</label>
+          <input type="text" id="url" name="url">
+        </div>
+
+        <div class="form-field input-right">
+          <label for="keywords">Keywords</label>
+          <input type="text" id="keywords"  name="keywords">
+        </div>
+
+        <div class="form-field input-right">
+          <label for="zipCode">ZipCode</label>
+          <input type="text" id="zipCode"  name="zipCode">
+          <label>OR</label>
+        </div>
+
+        <div class="form-field input-right">
+          <label for="city">City</label>
+          <input type="text" id="city"  name="city">
+        </div>
+
+
+        <div class="form-field input-right">
+          <label for="expDate">ExpDate</label>
+          <input type="text" id="expDate"  name="expDate">
+        </div>
+
+        <div class="form-field input-right" id="coup">
+          <label for="code">CouponCode</label>
+          <input type="text" id="code"  name="code">
+        </div>
+
+        <div class="form-field input-right">
+          <input type="hidden" id="timeStamp" name="timeStamp" size="20">
+         </div>
+
+        <div class="form-field submit-field" >
+          <!-- <button type="button">Submit</button> -->
+          <input type="submit"  id="sub" value="Submit">
+          <div id="ajaxresponse" style="text-align: center;display:none;">Item added successfully</div>
+        </div>
+      </form>
+    </div>
+    <!-- <h2>Add Item</h2>
+    <div class="container">
+      <form action=""  enctype='multipart/form-data' id="dealBuddy" method="POST">
+        <div class="row">
+          <div class="col-25">
+            <label for="item">Item Type *</label>
+          </div>
+          <div class="col-75">
+            <select id="item" name="item" required>
+              <option value="">select</option>
+              <option value="1">Deal</option>
+              <option value="2">Coupon</option>
+              <option value="3">Event</option>
+              <option value="4">Travel</option>
+              <option value="5">Things to do</option>
+              <option value="6">Food</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="dealerRoleUserEmail">Email *</label>
+          </div>
+          <div class="col-75">
+            <input id="dealerRoleUserEmail" type="email"  name="dealerRoleUserEmail"  size="20" required placeholder="admin@admin.com" autocomplete="email">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="title">Title *</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="title" name="title"  size="20" required> 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="imageUrl">ImageUrl</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="imageUrl" name="imageUrl"  size="20" placeholder="https://www.gstatic.com/webp/gallery/1.jpg"> 
+          </div>
+          <div class="col-25">
+            <label>OR</label>
+          </div>
+            <p>OR</p> 
+        </div>
+            <div class="row">
+              <div class="col-25">
+                 <label for="inputFileToLoad">ImageUpload</label>
+               </div>
+                 <div class="col-75">
+                   <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();"/>
+                </div>
+                <div class="col-75">
+                  <input type="hidden" id="base64ImageBytes" name="base64ImageBytes">
+                </div>
+             </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="description">Description *</label>
+          </div>
+          <div class="col-75">
+            <textarea id="description" name="description"  rows="4" cols="50" required></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="categories">Categories</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="categories" name="categories">
+          </div>
+        </div>
+        <div class="row" id="brnd">
+          <div class="col-25">
+            <label for="brand">Brand</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="brand" name="brand" size="20">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="vendor">Vendor</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="vendor" name="vendor" size="20">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="url">URL</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="url" name="url" size="20">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="keywords">Keywords</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="keywords" name="keywords" size="20">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="zipCode">Zipcode</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="zipCode" name="zipCode" size="20">
+          </div>
+          <br/>
+           <p>OR</p>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="city">City</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="city" name="city" size="20">
+            </div>
+        </div>
+         <div class="row">
+          <div class="col-25">
+            <label for="expDate">Exp Date</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="expDate" name="expDate" size="20">
+          </div>
+         </div>
+         <div class="row" id="coup">
+          <div class="col-25">
+            <label for="code">Coupon Code</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="code" name="code" size="20">
+          </div>
+         </div>
+         <div class="col-75">
+            <input type="hidden" id="timeStamp" name="timeStamp" size="20">
+          </div>
+        </div>
+        <div class="row">
+          <input type="submit"  id="sub" value="Submit">
+          <div id="ajaxresponse" style="text-align: center;display:none;">Item added successfully</div>
+        </div>
+      </form>
+      <!-- <div id="ajaxresponse" style="text-align: center"></div> 
+    </div> -->
+     
+  </body>
+
+</html>
