@@ -11,23 +11,7 @@
     
     h1{    
         text-align: center;
-    }    
-
-    .form-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    form {
-      width: 75%;
-      max-width: 600px;
-      min-width: 400px;
-      padding: 2em;
-      background: #5abc9b;
-      border-radius: 0.25em;
-      box-shadow: 0 0 2em rgba(0, 0, 0, 0.2);
-    }
+    }  
 
     input,
     select,
@@ -52,25 +36,26 @@
       outline: 0;
     }
 
-    .form-field {
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      width: 75%;
+      max-width: 600px;
+      min-width: 400px;
+      padding: 2em;
+      background: #5abc9b;
+      border-radius: 0.25em;
+      box-shadow: 0 0 2em rgba(0, 0, 0, 0.2);
+    }
+
+   .form-field {
       display: flex;
       margin-bottom: 1em;
     }
-
-@media screen and (max-width: 720px) {
-        .form-field {
-           flex-wrap: wrap;
-         }
-        .form-field label {
-          flex: 1;
-        }
-        input,
-        select,
-        textarea {
-          flex: 1 1 100%;
-          padding: 1em;
-        }
-}
 
     .form-field input, select,textarea{
       flex: 1;
@@ -94,11 +79,7 @@
       flex-direction: row-reverse;
        
     }
-     @media screen and (max-width: 720px) {
-          .submit-field{
-          flex: 0 1 100%;
-        }
-      }
+   
     input#sub {
         flex: 0 1 40%;
         margin-top: 10px;
@@ -115,3 +96,26 @@
         transition: 0.3s;
         cursor: pointer;
       }
+
+/* Media queries */
+
+@media screen and (max-width: 720px) {
+          .submit-field{
+          flex: 0 1 100%;
+        }
+  }
+
+@media screen and (max-width: 720px) {
+        .form-field {
+           flex-wrap: wrap;
+         }
+        .form-field label {
+          flex: 1;
+        }
+        input,
+        select,
+        textarea {
+          flex: 1 1 100%;
+          padding: 1em;
+        }
+}
