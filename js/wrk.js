@@ -1,16 +1,17 @@
 $(document).ready(function(){
+    /* To disable  the second field that has OR label in UI */
+    
     $("input#zipCode").keydown(function() {
-        // If they pressed tab AND the input has a (valid) value
+        // If  the input has a (valid) value
         if ($(this).val()) {
-            //$(this).next('.step').attr('disabled', false);
-            $('input#city').prop("disabled", 'disabled');
+           $('input#city').prop("disabled", 'disabled');
         }
         else{
            $('input#city').prop("disabled", false);
         }
     });
          $("input#city").keydown(function() {
-        // If they pressed tab AND the input has a (valid) value
+        // If the input has a (valid) value
         if ($(this).val()) {
             //$(this).next('.step').attr('disabled', false);
             $('input#zipCode').prop("disabled", 'disabled');
@@ -36,15 +37,15 @@ $(document).ready(function(){
           }
       });
 });
+
+/* Jquery datepicker */
+
   $( function() {
     $( "#expDate" ).datepicker();
-    //    $('#expDate').datetimepicker({
-    //      format: 'DD/MM/YYYY HH:mm'
-    // });
+   } );
 
-  } );
+ /*  Base 64 conversion of an image */
 
-   
           function encodeImageFileAsURL() {
               var filesSelected = document.getElementById("inputFileToLoad").files;
               if (filesSelected.length > 0) {
@@ -59,7 +60,7 @@ $(document).ready(function(){
               }
             }
                 
-/*   Testing */
+/* converting form field to JSON format */
 
     $.fn.serializeObject = function()
     {
@@ -93,6 +94,7 @@ $(document).ready(function(){
           return o;
         
           };
+/*** Posting data to elastic beanstalk ***/
 
  $(document).ready(function(){
          $("#item").change(function() {
@@ -162,29 +164,4 @@ $(document).ready(function(){
           }); 
       });
  
-// $(function() { 
-//     $('form').submit(function() {  
-//             var fData = JSON.stringify($('form').serializeObject());
-//             console.log(fData);
-//             fData += timeStamp + base64ImageBytes ;
-//              console.log(fData);
-//               $.ajax({
-//                  url :'http://db10-env.dvyphnsnse.us-east-2.elasticbeanstalk.com/dealbuddy/rest/deals',
-//                  type: 'POST',
-//                  headers: { 'Content-Type': 'application/json','dealerRoleUserEmail': [$('#dealerRoleUserEmail').val()]},
-//                  dataType: 'json',
-//                  contentType : 'application/json',
-//                  data :fData
-//                  }).done(function(response){ 
-//                   $("#ajaxresponse").fadeIn('slow', function(){
-//                    $("#ajaxresponse").delay(2000).fadeOut(); 
-//                 });
-//                   var value1 = $("input#dealerRoleUserEmail").val();
-//                   $("#dealBuddy")[0].reset();
-//                   $("input#dealerRoleUserEmail").val( value1 );
-//               });
-         
-//         return false;
-//     });
-// });
 
