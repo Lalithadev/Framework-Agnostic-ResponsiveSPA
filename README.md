@@ -1,4 +1,4 @@
-# Framework-Agnostic-Responsive single web page form submission  to elastic beanstalk.
+# Framework-Agnostic-Responsive single web page  multiple form submissions  to elastic beanstalk.
 
 This project deals with simple form submission  to  elastic bean stalk using Jquery and Vanilla Javascript while performing various conversions  on client side like  converting current time  to epoch time format, converting image to base64 and sent to Elastic bean stalk 
 
